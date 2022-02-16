@@ -1,0 +1,19 @@
+---
+- name: "install mediawiki"
+  hosts: 192.168.56.102
+  vars:
+    user: sartys
+    domains:
+      - domain: sartys.edu
+        php: yes
+      - domain: lolo.org
+        php: no 
+    lines:
+      - line: post_max_size
+      - line: memory_limit
+      - line: upload_max_filesize
+      - line: date.timezone
+  roles :
+    - Lamp
+
+

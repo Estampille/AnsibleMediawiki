@@ -1,0 +1,45 @@
+---
+
+# tasks file for user
+
+- name: "creation group toto"
+
+  group:
+
+   name: toto
+
+   state: present
+
+- name: "creation d'un utilisateur"
+
+  when: user is defined
+
+  user:
+
+   name: "{{ user }}"
+
+   create_home: yes
+
+   shell: /usr/bin/zsh
+
+   comment: mon user
+
+   group: toto
+
+- name: "install key pubi"
+
+  when: user is defined
+
+  authorized_key:
+
+   user: "{{ user }}"
+
+   key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+
+- name: "config sudo"
+
+  template:
+
+   src: /etc/ansible/roles/user/templates/sudoers.j2
+
+   dest: /etc/sudoers.d/{{ user }}

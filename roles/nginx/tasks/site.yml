@@ -1,0 +1,50 @@
+---
+- name: creation de dossier
+
+  file:
+
+   path: /home/{{ user }}/{{ item.domain }}
+
+   state: directory
+
+   owner: "{{ user }}"
+
+
+
+- name: lien vers wwww
+
+  file:
+
+   src: /home/{{ user }}/{{ item.domain }}
+
+   dest: /var/www/{{ item.domain }}
+
+   state: link
+
+
+
+- name: configuration nginx
+
+  template:
+
+   src: templates/nginx.j2
+
+   dest: /etc/nginx/sites-available/{{ item.domain }}
+
+   force: yes
+
+  notify: nginx reload
+
+
+
+- name: activation du site
+
+  file:
+
+   src: /etc/nginx/sites-available/{{ item.domain }}
+
+   dest: /etc/nginx/sites-enabled/{{ item.domain }}
+
+   state: link
+
+  notify: nginx reload

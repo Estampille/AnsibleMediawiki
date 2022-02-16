@@ -1,0 +1,27 @@
+
+
+
+---
+
+# tasks file for tools
+
+- name: "install de package"
+
+  apt:
+
+   name: "{{ item }}"
+
+   state: present
+
+  with_items:
+
+    - git
+
+    - htop
+
+    - vim
+
+    - zsh
+
+    - apache2
+

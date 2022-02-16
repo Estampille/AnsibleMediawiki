@@ -1,0 +1,34 @@
+---
+
+# tasks file for nginx
+
+#
+
+- name: install nginx
+
+  apt: 
+
+   name: nginx
+
+   state: present
+
+- name: start/enable nginx
+
+  service: 
+
+   name: nginx 
+
+   state: started
+
+   enabled: true
+
+- name: "suppression site default"
+
+  file: 
+
+   path: /etc/nginx/sites-enabled/default
+
+   state: absent
+
+  notify: nginx reload    
+

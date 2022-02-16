@@ -1,0 +1,26 @@
+
+
+- name: update du cache
+  apt:
+    update_cache: yes  
+
+- name: "installation php"
+  apt: 
+   name: php7.4
+   state: present
+
+- name : installation fonction php
+
+  apt:
+
+   name: "{{ item }}"
+
+   state: present
+
+  with_items: "{{ php_packages }}"
+
+- name: change line
+  lineinfile:
+    path: /etc/php/7.4/cli/php.ini
+    regexp: '^post_max_size='
+    line: post_max_size= 9

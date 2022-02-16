@@ -1,0 +1,15 @@
+---
+# defaults file for hosts
+#
+
+php_packages:
+
+  - php7.3-gd
+
+  - php7.3-curl
+
+  - php7.3-fpm
+
+  - php7.3-mysql
+
+  - php7.3-cli
