@@ -20,3 +20,4 @@
     src: /var/lib/mediawiki
     dest: /var/www/html/mediawiki
     state: link
+
