@@ -67,7 +67,17 @@
     name: python3-pymysql
     state: present
 
-- name: Ensure mysql is running and starts on boot
+- name: isntall php-intl
+  apt:
+    name: php-intl 
+    state: present
+
+- name: restart apache
+  service:
+    name: apache2
+    state: reloaded
+
+- name: mysql run ans start
   service:
     name: mysql
     state: started
