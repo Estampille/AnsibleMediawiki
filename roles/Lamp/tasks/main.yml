@@ -80,9 +80,10 @@
 - name: mysql run ans start
   service:
     name: mysql
-    state: started
+    state: startedcd 
     enabled: yes
   become: yes
+
 
 
 - name: launch mysql conf
