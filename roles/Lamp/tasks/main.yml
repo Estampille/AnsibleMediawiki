@@ -62,4 +62,19 @@
     name: php-mbstring
     state: present
 
+- name: isntall python3-pymysql
+  apt:
+    name: python3-pymysql
+    state: present
+
+- name: Ensure mysql is running and starts on boot
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+  become: yes
+
+
+- name: launch mysql conf
+  include: mysql.yml
 

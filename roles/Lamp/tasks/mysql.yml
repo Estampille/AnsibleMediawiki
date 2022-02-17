@@ -1,0 +1,16 @@
+
+---
+
+- name: create database
+  mysql_db: 
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: uselessBase
+    state: present
+  
+- name: create user - Useless
+  mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: useless
+    password: 12345
+    priv: '*.*:ALL'
+    state: present
