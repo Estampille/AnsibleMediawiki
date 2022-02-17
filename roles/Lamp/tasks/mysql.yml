@@ -6,11 +6,11 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     name: "{{ user }}Base"
     state: present
-  
+
 - name: create user - {{ user }}
   mysql_user:
     login_unix_socket: /var/run/mysqld/mysqld.sock
     name: "{{ user }}"
-    password: 12345
+    password: "{{ password }}"
     priv: '*.*:ALL'
     state: present
