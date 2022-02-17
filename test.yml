@@ -15,5 +15,6 @@
       - line: date.timezone
   roles :
     - Lamp
+    - mediawiki
 
 

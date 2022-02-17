@@ -1,7 +1,10 @@
 ---
 # tasks file for mediawiki
-- name: Download foo.conf
-  get_url:
-    url: http://example.com/path/file.conf
-    dest: /etc/foo.conf
-    mode: '0440'
+
+- name: télécharger et décompresser mediawiki
+  unarchive:
+    src: https://releases.wikimedia.org/mediawiki/1.37/mediawiki-1.37.1.tar.gz
+    dest: /var/lib/mediawiki
+    remote_src: yes
+
+
