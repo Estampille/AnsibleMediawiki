@@ -1,0 +1,13 @@
+---
+# tasks file for container
+- name: pull {{ image }} 
+  docker_image:
+    name: "{{ image }}"
+    source: pull
+
+- name: Create a data container
+  docker_container:
+    name: "{{ nomcontainer }}"
+    image: "{{ image }}"
+
+

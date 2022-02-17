@@ -1,0 +1,39 @@
+---
+# tasks file for docker
+- name: update du cache
+  apt:
+    update_cache: yes  
+
+- name: "install de package"
+  apt:
+   name: "{{ item }}"
+   state: present
+  with_items:
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+    - rpm
+    - python3-docker
+- name: ajout de gpg key
+  apt_key:
+    state: present
+    url: https://download.docker.com/linux/debian/gpg
+
+- name: ajout du repo docker
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    state: present
+
+- name: update du cache
+  apt:
+    update_cache: yes  
+  
+- name: isntalle pkg docker
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
