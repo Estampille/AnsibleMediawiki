@@ -5,7 +5,7 @@
     name: "{{ image }}"
     source: pull
 
-- name: Create a data container
+- name: Create container
   docker_container:
     name: "{{ nomcontainer }}"
     image: "{{ image }}"

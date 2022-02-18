@@ -3,8 +3,8 @@
   hosts: 192.168.56.104
   vars:
     user: sartys
-    image: nginx
-    nomcontainer: first
+    image: alpine
+    nomcontainer: second
   roles :
     - docker
     - container

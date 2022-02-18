@@ -1,0 +1,25 @@
+---
+# tasks file for ec2
+
+- name: créé ssh
+  ec2_key:
+    
+    aws_access_key: "{{ access }}"
+    aws_secret_key: "{{ key }}"
+    region: eu-central-1
+    name: delannoy_key
+
+- name: création instance 
+  ec2_instance:
+    aws_access_key: "{{ access }}"
+    aws_secret_key:  "{{ key }}"
+    name: "Delannoy-instance"
+    
+    instance_type: t2.micro
+    security_group: default
+    region: eu-central-1
+    network:
+      assign_public_ip: true
+    image_id: ami-0245697ee3e07e755
+    tags:
+      Environment: Testing
