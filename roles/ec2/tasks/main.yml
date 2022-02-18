@@ -3,18 +3,23 @@
 
 - name: créé ssh
   ec2_key:
-    
     aws_access_key: "{{ access }}"
     aws_secret_key: "{{ key }}"
     region: eu-central-1
-    name: delannoy_key
+    name: delannoy_key_ansible
+  register: ec2_key
+
+- name: save private key
+  copy: content="{{ec2_key.key.private_key}}" dest=/etc/ansible/delannoy_key_ansible.pem mode=0600
+  when: ec2_key.changed
+  
 
 - name: création instance 
   ec2_instance:
     aws_access_key: "{{ access }}"
     aws_secret_key:  "{{ key }}"
     name: "Delannoy-instance"
-    
+  
     instance_type: t2.micro
     security_group: default
     region: eu-central-1
