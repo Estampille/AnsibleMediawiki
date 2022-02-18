@@ -1,0 +1,12 @@
+---
+- name: installer ec2 
+  hosts: localhost
+  vars:
+    access: 
+    key: 
+    
+  roles :
+    - ec2
+
+
+
