@@ -1,8 +1,8 @@
 ---
-- name: install kube
-  hosts: localhost
-  vars:
-        hosts_file: /etc/ansible/hosts
-
-  roles :
+- name: "install"
+  hosts: all
+  remote_user: admin
+  gather_facts: false
+  become: true
+  roles:
     - kubernetes

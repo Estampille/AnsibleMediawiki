@@ -29,6 +29,8 @@
 
 [worker]
 3.71.187.96
+#ansible_ssh_private_key_file: "/etc/ansible/delannoy_key_ansible.pem"
+
 # If you have multiple hosts following a pattern, you can specify
 # them like this:
 

@@ -1,32 +1,23 @@
 ---
-- name: install kube
-  hosts: "master, worker"
-  remote_user: admin
-  gather_facts: false
-  become: yes
-  connexion: ssh
-  
-  tasks:
 
-    - name: update du cache
-      apt:
-        update_cache: yes  
+- name: update du cache
+  apt:
+    update_cache: yes  
+- name: ajout gpg
+  apt_key:
+    state: present
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
-    - name: ajout gpg
-      apt_key:
-        state: present
-        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+- name: ajout du repo kube
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
 
-    - name: ajout du repo kube
-      apt_repository:
-        repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
-        state: present
-
-    - name: "install de package"
-      apt:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - kubelet
-        - kubeadm
-        - kubectl
+- name: "install de package"
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - kubelet
+    - kubeadm
+    - kubectl
