@@ -23,7 +23,12 @@
 ## 192.168.1.100
 ## 192.168.1.110
 
-192.168.56.104
+[master]
+delannoy_master ansible_host=3.71.108.227 ansible_user=root
+
+
+[worker]
+delannoy_worker ansible_host=3.127.220.165 ansible_user=root
 # If you have multiple hosts following a pattern, you can specify
 # them like this:
 

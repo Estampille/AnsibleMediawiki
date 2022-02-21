@@ -18,7 +18,7 @@
   ec2:
     aws_access_key: "{{ access }}"
     aws_secret_key:  "{{ key }}"
-    key_name: delannoy_key_ansible
+    key_name: "Delannoy-Kubernet"
     instance_type: t2.micro
     group: default
     region: eu-central-1
@@ -32,9 +32,9 @@
   register: ec2
 
 - name: debug
-  debug:
+    debug:
     msg: "{{ ec2 }}"
-
+    
 - name: sauvegarde ip
   lineinfile:
     dest: "{{hosts_file}}"  
