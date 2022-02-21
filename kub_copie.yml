@@ -1,0 +1,15 @@
+---
+
+
+- name: "provision et lancement kubernetes"
+  hosts: localhost
+  vars:
+    access: 
+    key: 
+    hosts_file: /etc/ansible/hosts
+
+  roles :
+    - provision_kube
+
+
+

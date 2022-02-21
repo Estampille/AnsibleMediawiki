@@ -14,18 +14,20 @@
   when: ec2_key.changed
 
 
-- name: création instance 
-  ec2_instance:
+- name: création instances 
+  ec2:
     aws_access_key: "{{ access }}"
     aws_secret_key:  "{{ key }}"
-    name: "Delannoy-instance"
+    key_name: delannoy_key_ansible
     instance_type: t2.micro
-    security_group: default
+    group: default
     region: eu-central-1
-    network:
-      assign_public_ip: true
-    image_id: ami-0245697ee3e07e755
-    tags:
+    image: ami-0245697ee3e07e755
+    count: 2
+    count_tag:
+      name: master
+      name: worker
+    instance_tags:
       Environment: Testing
   register: ec2
 
