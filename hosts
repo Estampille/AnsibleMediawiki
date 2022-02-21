@@ -24,11 +24,11 @@
 ## 192.168.1.110
 
 [master]
-delannoy_master ansible_host=3.66.88.205
+3.66.88.205
 
 
 [worker]
-delannoy_worker ansible_host=3.71.187.96
+3.71.187.96
 # If you have multiple hosts following a pattern, you can specify
 # them like this:
 

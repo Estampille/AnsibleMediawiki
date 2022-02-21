@@ -1,9 +1,8 @@
 ---
-# tasks file for kubernetes
-- 
-- hosts: "master, worker"
+- name: install kube
+  hosts: "master, worker"
   remote_user: admin
-  gather_facts: no
+  gather_facts: false
   become: true
   connexion: ssh
   
