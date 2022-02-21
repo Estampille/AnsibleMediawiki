@@ -3,7 +3,7 @@
   hosts: "master, worker"
   remote_user: admin
   gather_facts: false
-  become: true
+  become: yes
   connexion: ssh
   
   tasks:
@@ -12,7 +12,8 @@
       apt:
         update_cache: yes  
 
-    - apt_key:
+    - name: ajout gpg
+      apt_key:
         state: present
         url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
@@ -23,8 +24,8 @@
 
     - name: "install de package"
       apt:
-      name: "{{ item }}"
-      state: present
+        name: "{{ item }}"
+        state: present
       with_items:
         - kubelet
         - kubeadm
